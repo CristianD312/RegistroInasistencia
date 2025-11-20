@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.sextoProg.registroinasistencias.RecuperarPassController"
+            prefHeight="400.0" prefWidth="600.0">
+    <Label layoutX="223.0" layoutY="165.0" text="Pregunta secreta">
+        <font>
+            <Font size="18.0"/>
+        </font>
+    </Label>
+    <TextField fx:id="TxtCampoRespuesta" layoutX="165.0" layoutY="235.0" onAction="#OnIngresarClick" prefHeight="39.0"
+               prefWidth="271.0" promptText="Ingrese la respuesta">
+        <font>
+            <Font size="13.0"/>
+        </font>
+    </TextField>
+    <Button fx:id="BtnIngresar" layoutX="254.0" layoutY="287.0" mnemonicParsing="false" onAction="#OnIngresarClick"
+            text="Ingresar"/>
+    <Label fx:id="LabelPregunta" layoutX="270.0" layoutY="192.0" text="Label"/>
+    <Label layoutX="173.0" layoutY="30.0" text="Ingrese el nombre de usuario">
+        <font>
+            <Font size="18.0"/>
+        </font>
+    </Label>
+    <TextField fx:id="TxtCampoUsuario" layoutX="154.0" layoutY="66.0" onAction="#OnBuscarUsuarioClick" prefHeight="39.0"
+               prefWidth="271.0" promptText="ingrese el nombre de usuario">
+        <font>
+            <Font size="13.0"/>
+        </font>
+    </TextField>
+    <Button fx:id="BtnBuscar" layoutX="258.0" layoutY="119.0" mnemonicParsing="false" onAction="#OnBuscarUsuarioClick"
+            text="buscar"/>
+
+</AnchorPane>

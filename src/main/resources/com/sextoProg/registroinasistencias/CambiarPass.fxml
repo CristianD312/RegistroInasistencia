@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.sextoProg.registroinasistencias.CambiarPassController"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label fx:id="LabelCambiar" layoutX="284.0" layoutY="146.0" text="Cambiar Contraseña">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Label>
+        <Label fx:id="LabelConfirmar" layoutX="277.0" layoutY="230.0" text="Confirmar Contraseña">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Label>
+        <Label layoutX="369.0" layoutY="248.0" />
+        <Button fx:id="BtnCambiar" layoutX="338.0" layoutY="305.0" mnemonicParsing="false" text="Cambiar" />
+        <TextField fx:id="TxtCampoCambiar" layoutX="275.0" layoutY="172.0">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </TextField>
+        <TextField fx:id="TxtCampoConfirmar" layoutX="275.0" layoutY="265.0">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </TextField>
+    </children>
+
+</AnchorPane>
