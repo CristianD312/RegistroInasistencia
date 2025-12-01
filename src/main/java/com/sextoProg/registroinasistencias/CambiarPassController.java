@@ -26,22 +26,23 @@ public class CambiarPassController {
 
     @FXML
     protected void OnCambiarContraseñaClick() {
-        GestorVentanas gestor = new GestorVentanas();
-        String contraseña1 = this.TxtCampoCambiar.getText();
-        String contraseña2 = this.TxtCampoConfirmar.getText();
+        GestorVentanas gestor=new GestorVentanas();
+        String contraseña1 = TxtCampoCambiar.getText();
+        String contraseña2 = TxtCampoConfirmar.getText();
         Connection conn = null;
         PreparedStatement statement = null;
         if (contraseña1.equals(contraseña2)) {
             try {
                 conn = Conexion.conectar();
-                String sql = "UPDATE Usuario SET nombre_usuario=?";
+                String sql = "UPDATE usuarios SET password=?";
                 statement = conn.prepareStatement(sql);
+
                 statement.setString(1, contraseña1);
                 statement.executeUpdate();
-            } catch (SQLException var7) {
-                SQLException ex = var7;
+            } catch (SQLException ex) {
                 gestor.mostrarError("error" + ex.toString());
             }
+
         }
 
     }

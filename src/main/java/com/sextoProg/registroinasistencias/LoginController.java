@@ -39,14 +39,13 @@ public class LoginController {
         Usuario usuario = new Usuario();
 
         try {
-            Connection conn = Conexion.conectar(); //USA EL METODO CONECTAR DE OTRA CLASE
-
+            Connection conn = Conexion.conectar();
             usuario.setNombre(inputUsuario.getText());
-            String sql = "SELECT * FROM usuarios WHERE nombre_usuario = ?"; //toma toda la tabla de clientes de algun id
+            String sql = "SELECT * FROM usuarios WHERE nombre_usuario = ?";
             PreparedStatement statement = conn.prepareStatement(sql);
 
             usuario.setContraseña(inputContraseña.getText());
-            String sql2 = "SELECT * FROM usuarios WHERE password = ?"; //toma toda la tabla de clientes de algun id
+            String sql2 = "SELECT * FROM usuarios WHERE password = ?";
             PreparedStatement statement2 = conn.prepareStatement(sql2);
             statement.setString(1,  usuario.getNombre() );
 
