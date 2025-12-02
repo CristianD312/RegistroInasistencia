@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class CrudPersonalController {
 
 
-    Personal personal = new Personal();
+
     @FXML
     private TextField txtNombre;
 
@@ -52,6 +52,7 @@ public class CrudPersonalController {
 
     @FXML
     protected void OnEnviarClick() {
+        Personal personal = new Personal();
         GestorVentanas gestor = new GestorVentanas();
         personal.setNombre(txtNombre.getText());
         personal.setApellido(txtApellido.getText());
@@ -65,6 +66,7 @@ public class CrudPersonalController {
             return;
         }
         personal.setCuil(Integer.parseInt(cuilText.trim()));
+        gestor.mostrarInfo("Numero: "+personal.getCuil());
         personal.setCargo(CBPersonal.getValue());
         PreparedStatement statement = null;
 

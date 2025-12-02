@@ -11,18 +11,13 @@ public class Personal {
 
     }
 
-    public Personal(String Nombre, String Apellido, int Cuil) {
-        this.Nombre = Nombre;
-        this.Apellido = Apellido;
-        this.Cuil = Cuil;
+    public Personal(String nombre, String apellido, int cuil, String cargo) {
+        Nombre = nombre;
+        Apellido = apellido;
+        Cuil = cuil;
+        this.cargo = cargo;
     }
 
-    public Personal(int id, String Nombre, String Apellido, int Cuil) {
-        this.id = id;
-        this.Nombre = Nombre;
-        this.Apellido = Apellido;
-        this.Cuil = Cuil;
-    }
 
     public int getId() {
         return id;
@@ -53,7 +48,7 @@ public class Personal {
     }
 
     public void setCuil(int cuil) {
-        Cuil = Cuil;
+        Cuil = cuil;
     }
 
     public String getCargo() {
