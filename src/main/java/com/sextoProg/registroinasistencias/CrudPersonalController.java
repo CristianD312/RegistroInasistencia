@@ -11,6 +11,8 @@ import logical.Personal;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CrudPersonalController {
 
@@ -29,16 +31,20 @@ public class CrudPersonalController {
     private Button BtnEnviar;
     @FXML
     private ComboBox<String> CBPersonal;
+
     @FXML
-    private void initialize(){
+    private void initialize() {
         cargarCargos();
     }
-    private void cargarCargos(){
-        ObservableList<String> cargos= FXCollections.observableArrayList("Profesor","Preceptor","Auxiliar");
+
+    @FXML
+    private void cargarCargos() {
+        ObservableList<String> cargos = FXCollections.observableArrayList("Profesor", "Preceptor", "Auxiliar");
         CBPersonal.setItems(cargos);
-        //CBPersonal.setPromptText("--Selecciona un cargo--");
+        CBPersonal.setPromptText("--Selecciona un cargo--");
     }
 
+    @FXML
     protected void OnVolverClick() {
         GestorVentanas gestor = new GestorVentanas();
         gestor.crearVentana("menu.fxml", "Menú");
@@ -46,9 +52,19 @@ public class CrudPersonalController {
 
     @FXML
     protected void OnEnviarClick() {
+        GestorVentanas gestor = new GestorVentanas();
         personal.setNombre(txtNombre.getText());
         personal.setApellido(txtApellido.getText());
-        personal.setCuil(Integer.parseInt(txtCuil.getText()));
+        String cuilText = txtCuil.getText();
+
+        // 1. VALIDACIÓN: Verificar que el campo no esté vacío
+        if (cuilText == null || cuilText.trim().isEmpty()) {
+            // Muestra un mensaje de error al usuario (puedes usar un Alert)
+            System.err.println("ERROR: El campo CUIL no puede estar vacío.");
+            // **IMPORTANTE**: Salir del método para evitar la ejecución del resto del código.
+            return;
+        }
+        personal.setCuil(Integer.parseInt(cuilText.trim()));
         personal.setCargo(CBPersonal.getValue());
         PreparedStatement statement = null;
 
@@ -62,7 +78,13 @@ public class CrudPersonalController {
             statement.setString(4, personal.getCargo());
 
             statement.executeUpdate();
+        } catch (NumberFormatException e) {
+            // Manejar error si el texto no es un número (ej. ingresó letras)
+            System.err.println("ERROR: El CUIL debe ser un número válido.");
         } catch (Exception e) {
+            e.printStackTrace();
+            gestor.mostrarError("ERROR de Base de Datos: " + e.getMessage());
+            //Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
         }
 
     }
