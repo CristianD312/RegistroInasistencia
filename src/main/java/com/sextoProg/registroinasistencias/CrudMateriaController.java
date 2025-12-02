@@ -32,6 +32,8 @@ public class CrudMateriaController {
     @FXML
     private void initialize(){
         cargarGrupos();
+        cargarAño();
+        cargarOrientacion();
     }
 
     private void cargarGrupos(){
